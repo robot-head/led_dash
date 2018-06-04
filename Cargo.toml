@@ -1,0 +1,8 @@
+[package]
+name = "led_dash"
+version = "0.1.0"
+authors = ["Matthew Stone (matthew.d.stone@gmail.com)"]
+license = "GPLV2"
+
+[dependencies]
+rouille = "2.1.0"
