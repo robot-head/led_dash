@@ -6,3 +6,7 @@ license = "GPLV2"
 
 [dependencies]
 rouille = "2.1.0"
+rust-embed = "3.0.0"
+maud = "0.17.5"
+dotenv = "0.13.0"
+diesel = {version = "1.3.0", features = ["sqlite'"]}

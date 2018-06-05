@@ -1,5 +1,18 @@
+#![feature(proc_macro)]
+
+// Set up compile-time template engine (Maud)
+extern crate maud;
 #[macro_use]
 extern crate rouille;
+// Set up static asset dev hosting and release embedding
+#[macro_use]
+extern crate rust_embed;
+
+use maud::html;
+
+#[derive(RustEmbed)]
+#[folder = "static/"]
+struct Asset;
 
 fn main() {
     println!("Now listening on localhost:8000");
