@@ -11,10 +11,21 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="material.css">
+    <link rel="stylesheet" href="/static/css/material-components-web.min.css">
 </head>
-<body class="shrine-login">
-Hi
-<script src="material.js" async></script>
+<body class="mdc-typography">
+    <h1>LED Dashboard</h1>
+    <section class="hero">
+        <button class="mdc-button">
+            Flat
+        </button>
+        <button class="mdc-button mdc-button--raised">
+            Raised
+        </button>
+    </section>
+    <script src="/static/js/material-components-web.min.js" async></script>
+    <script>
+        mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button'));
+    </script>
 </body>
 </html>

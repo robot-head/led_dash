@@ -5,25 +5,23 @@ extern crate rouille;
 
 
 fn main() {
-    let material_js = include_str!("./assets/js/material-components-web.min.js");
-    let material_css = include_str!("./assets/css/material-components-web.min.css");
-
     println!("Now listening on 0.0.0.0:8000");
 
     rouille::start_server("0.0.0.0:8000", move |request| {
+        {
+            println!("{:#?}", &request);
+            if let Some(request) = request.remove_prefix("/static") {
+                let response = rouille::match_assets(&request, "./src/assets");
+                if response.is_success() {
+                    return response;
+                }
+            }
+        }
+
+
         router!(request,
             (GET) (/) => {
                 rouille::Response::redirect_302("/static/html/dashboard.html")
-            },
-
-
-            (GET) (/material.js) => {
-                rouille::Response::text(material_js)
-            },
-
-
-            (GET) (/material.css) => {
-                rouille::Response::text(material_css)
             },
 
 
