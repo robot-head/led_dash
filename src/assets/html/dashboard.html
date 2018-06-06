@@ -25,7 +25,19 @@
     </section>
     <script src="/static/js/material-components-web.min.js" async></script>
     <script>
-        mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button'));
+        var socket = new WebSocket("ws://" + window.location.host + "/ws", "echo");
+
+        function send(data) {
+            {
+                socket.send(data);
+            }
+        }
+
+        socket.onmessage = function (event) {
+            {
+                // TODO: Implement
+            }
+        }
     </script>
 </body>
 </html>
