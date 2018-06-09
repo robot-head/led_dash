@@ -1,10 +1,10 @@
 #![feature(proc_macro)]
 
 #[macro_use]
-extern crate rouille;
+extern crate clap;
 extern crate hostname;
 #[macro_use]
-extern crate clap;
+extern crate rouille;
 
 use rouille::websocket;
 use std::thread;
@@ -22,7 +22,6 @@ fn main() {
                 }
             }
         }
-
 
         router!(request,
             (GET) (/) => {
@@ -46,13 +45,15 @@ fn main() {
 }
 
 fn get_listen_addr() -> String {
-// Parse commandline arguments
-    let yaml = load_yaml!("cli.yml");
-    let matches = clap::App::from_yaml(yaml).get_matches();
+    // Parse commandline arguments
+    let matches = clap::App::from_yaml(load_yaml!("cli.yml")).get_matches();
     let system_hostname = hostname::get_hostname().unwrap();
     println!("Detected hostname: {}", system_hostname);
-    let listen_addr = format!("{}:{}", matches.value_of("host").unwrap_or(
-        &system_hostname), matches.value_of("port").unwrap_or_default());
+    let listen_addr = format!(
+        "{}:{}",
+        matches.value_of("host").unwrap_or(&system_hostname),
+        matches.value_of("port").unwrap_or_default()
+    );
     println!("Serving at http://{}", listen_addr);
     listen_addr
 }
