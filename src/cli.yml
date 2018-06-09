@@ -1,0 +1,14 @@
+name: LED Dashboard
+version: "0.1.0"
+author: Matthew Stone <djsc@pm.me>
+about: Lightweight lighting control that's stable
+args:
+    - port:
+        short: p
+        long: port
+        default_value: "8000"
+        help: Sets the port the webserver listen on
+    - host:
+        help: Sets the hostname or ip to bind the webserver to
+        short: h
+        long: host

@@ -2,15 +2,28 @@
 
 #[macro_use]
 extern crate rouille;
+extern crate hostname;
+#[macro_use]
+extern crate clap;
+
+use clap::App;
 
 use rouille::websocket;
 use std::thread;
 
-
 fn main() {
-    println!("Now listening on 0.0.0.0:8000");
+    // Parse commandline arguments
+    let yaml = load_yaml!("cli.yml");
+    let matches = clap::App::from_yaml(yaml).get_matches();
 
-    rouille::start_server("0.0.0.0:8000", move |request| {
+    let system_hostname = hostname::get_hostname().unwrap();
+    println!("Detected hostname: {}", system_hostname);
+
+    let listen_addr = format!("{}:{}", matches.value_of("host").unwrap_or(
+        &system_hostname), matches.value_of("port").unwrap_or_default());
+    println!("Serving at http://{}", listen_addr);
+
+    rouille::start_server(listen_addr, move |request| {
         {
             println!("{:#?}", &request);
             if let Some(request) = request.remove_prefix("/static") {
