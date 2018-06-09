@@ -9,6 +9,7 @@ args:
         default_value: "8000"
         help: Sets the port the webserver listen on
     - host:
-        help: Sets the hostname or ip to bind the webserver to
         short: h
         long: host
+        help: Sets the hostname or ip to bind the webserver to
+        default_value: "localhost"
