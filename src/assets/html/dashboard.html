@@ -15,31 +15,31 @@
 </head>
 
 <body class="mdc-typography">
-    <h1>LED Dashboard</h1>
-    <section class="hero">
-        <button class="mdc-button">
-            Flat
-        </button>
-        <button class="mdc-button mdc-button--raised">
-            Raised
-        </button>
-    </section>
-    <script src="/src/assets/js/material-components-web.min.js" async></script>
-    <script>
-        var socket = new WebSocket("ws://" + window.location.host + "/ws", "echo");
+<h1>LED Dashboard</h1>
+<section class="hero">
+    <button class="mdc-button">
+        Flat
+    </button>
+    <button class="mdc-button mdc-button--raised">
+        Raised
+    </button>
+</section>
+<script src="/src/assets/js/material-components-web.min.js" async></script>
+<script>
+    var socket = new WebSocket("ws://" + window.location.host + "/ws", "echo");
 
-        function send(data) {
-            {
-                socket.send(data);
-            }
+    function send(data) {
+        {
+            socket.send(data);
         }
+    }
 
-        socket.onmessage = function (event) {
-            {
-                // TODO: Implement
-            }
+    socket.onmessage = function (event) {
+        {
+            // TODO: Implement
         }
-    </script>
+    }
+</script>
 </body>
 
 </html>
