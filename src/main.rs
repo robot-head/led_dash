@@ -46,7 +46,8 @@ fn main() {
 
 fn get_listen_addr() -> String {
     // Parse commandline arguments
-    let matches = clap::App::from_yaml(load_yaml!("cli.yml")).get_matches();
+    let config_yaml = load_yaml!("cli.yml");
+    let matches = clap::App::from_yaml(config_yaml).get_matches();
     let system_hostname = hostname::get_hostname().unwrap();
     println!("Detected hostname: {}", system_hostname);
     let listen_addr = format!(

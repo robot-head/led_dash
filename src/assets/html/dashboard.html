@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,11 +9,11 @@
     <link rel="icon" sizes="192x192" href="https://material.io/static/images/simple-lp/favicons/components-192x192.png">
     <link rel="shortcut icon" href="https://material.io/static/images/simple-lp/favicons/components-72x72.png">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/material-components-web.min.css">
+    <link rel="stylesheet" href="/src/assets/css/material-components-web.min.css">
 </head>
+
 <body class="mdc-typography">
     <h1>LED Dashboard</h1>
     <section class="hero">
@@ -23,7 +24,7 @@
             Raised
         </button>
     </section>
-    <script src="/static/js/material-components-web.min.js" async></script>
+    <script src="/src/assets/js/material-components-web.min.js" async></script>
     <script>
         var socket = new WebSocket("ws://" + window.location.host + "/ws", "echo");
 
@@ -40,4 +41,5 @@
         }
     </script>
 </body>
+
 </html>
