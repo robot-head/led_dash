@@ -15,7 +15,7 @@ fn main() {
     rouille::start_server(listen_addr, move |request| {
         {
             println!("{:#?}", &request);
-            if let Some(request) = request.remove_prefix("/static") {
+            if let Some(request) = request.remove_prefix("/src/assets") {
                 let response = rouille::match_assets(&request, "./src/assets");
                 if response.is_success() {
                     return response;
@@ -25,7 +25,7 @@ fn main() {
 
         router!(request,
             (GET) (/) => {
-                rouille::Response::redirect_302("/static/html/dashboard.html")
+                rouille::Response::redirect_302("/src/assets/html/dashboard.html")
             },
 
             (GET) (/ws) => {
