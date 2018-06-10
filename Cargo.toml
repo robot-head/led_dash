@@ -7,4 +7,4 @@ license = "GPLV2"
 [dependencies]
 rouille = "2.1.0"
 hostname = "^0.1"
-clap = { features = ["yaml"] }
+clap = { version = "*", features = ["yaml"] }
